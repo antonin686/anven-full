@@ -1,3 +1,3 @@
 <?php
-Route::get('/dx', 'xd');
+Route::get('/dx', 'Index>index');
 

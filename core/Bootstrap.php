@@ -3,35 +3,38 @@ class Bootstrap
 {
     public function __construct() {
 
-        $url = $_SERVER['QUERY_STRING'];
-        Route::match($url);
+        $url = '/'.$_SERVER['QUERY_STRING'];
+
+        $route = Route::match($url);
+        if(!$route) {
+            echo '404 error route not found';
+        }else{
+            $controllerFile = 'app/controllers/' . $route->controller . '.php';
+            if(file_exists($controllerFile)) {
+                //echo $controllerFile;
+                require $controllerFile;
+            }else {
+                //require_once 'controllers/Errors.php';
+                $msg = 'No Such Controller Exists '.$route->controller;
+                echo $msg;
+                //$controller = new Errors($msg);
+                return false;
+            }
+        }
+
         //Route::getRoutes();
-
-    // if(!isset($_GET['url'])) {
-    //     return false;
-    // }
-    // $url = $_GET['url'];
-    // $url = rtrim($url, '/');
-    // $url = explode('/', $url);
-    
-    //     print_r($url);
-
-    //     $file = 'controllers/' . $url[0] . '.php';
-    //     if(file_exists($file)) {
-    //         require $file;
-    //     }else {
-    //         require_once 'controllers/Errors.php';
-    //         $controller = new Errors();
-    //         return false;
-    //     }
         
-    //     $controller = new $url[0];
+        $controller = new $route->controller;
+        
+        $method = $route->method;
+        //echo $method;
 
-    //     if (isset($url[2])) {
-    //         $controller->{$url[1]}($url[2]);
-    //     } else if (isset($url[1])) {
-    //         $controller->{$url[1]}();
-    //     }
+        if($method == null) {
+            echo '<br> no given method for controller '.$controller;
+        }else {
+           $controller->{$method}();
+        }
+        
      }
 
 }

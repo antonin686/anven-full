@@ -5,10 +5,12 @@
         static $routes = [];
 
         static function get($url, $action) {
-
+            $action = explode('>', $action);
+            //print_r($action);
             self::$routes[$url] = (object) [
                 'type' => 'get',
-                'action' => $action,
+                'controller' => $action[0],
+                'method' => isset($action[1]) ? $action[1] : null,
             ];
         }
 
@@ -18,14 +20,14 @@
         }
 
         static function match($url) {
-            var_dump($url);
-            //echo $url;
-    
+            //var_dump($url);
+
             if(isset(self::$routes[$url])) {
                 
-                var_dump(self::$routes[$url]->type);
+                //var_dump(self::$routes[$url]);
+                return self::$routes[$url];
             }else {
-                echo 'page not found';
+                return false;
             }
         }
     }

@@ -2,13 +2,14 @@
 
 class View {
 
-    function __construct() {
+    static function render($view)
+    {
+        $file = "app/views/$view".'.php';
 
-        echo 'This is a view <br>';
-    }
-
-    function render($name) {
-        
-        require 'views/' . $name . '.php';
+        if (is_readable($file)) {
+            require $file;
+        } else {
+            echo "$file not found";
+        }
     }
 }

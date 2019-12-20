@@ -8,6 +8,7 @@ class Bootstrap
         $route = Route::match($url);
         if(!$route) {
             echo '404 error route not found';
+            return;
         }else{
             $controllerFile = 'app/controllers/' . $route->controller . '.php';
             if(file_exists($controllerFile)) {

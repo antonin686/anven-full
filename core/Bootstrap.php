@@ -28,12 +28,20 @@ class Bootstrap
         $controller = new $route->controller;
         
         $method = $route->method;
+        
         //echo $method;
 
         if($method == null) {
             echo '<br> no given method for controller '.$controller;
         }else {
-           $controller->{$method}();
+            if($route->type == "get")
+            {
+                $controller->{$method}();
+            }else if($route->type == "post")
+            {
+                $controller->{$method}($route->request);
+            }
+           
         }
         
      }

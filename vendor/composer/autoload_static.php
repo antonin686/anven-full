@@ -18,6 +18,7 @@ class ComposerStaticInite4df135b7bb2dc1404c5bced0bb91c55
 
     public static $classMap = array (
         'GreetCommand' => __DIR__ . '/../..' . '/Commands/GreetCommand.php',
+        'MakeController' => __DIR__ . '/../..' . '/Commands/MakeController.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Symfony/Component/Console/Application.php',
         'Symfony\\Component\\Console\\Command\\Command' => __DIR__ . '/..' . '/symfony/console/Symfony/Component/Console/Command/Command.php',
         'Symfony\\Component\\Console\\Command\\HelpCommand' => __DIR__ . '/..' . '/symfony/console/Symfony/Component/Console/Command/HelpCommand.php',

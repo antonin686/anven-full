@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'GreetCommand' => $baseDir . '/Commands/GreetCommand.php',
+    'MakeController' => $baseDir . '/Commands/MakeController.php',
     'Symfony\\Component\\Console\\Application' => $vendorDir . '/symfony/console/Symfony/Component/Console/Application.php',
     'Symfony\\Component\\Console\\Command\\Command' => $vendorDir . '/symfony/console/Symfony/Component/Console/Command/Command.php',
     'Symfony\\Component\\Console\\Command\\HelpCommand' => $vendorDir . '/symfony/console/Symfony/Component/Console/Command/HelpCommand.php',
